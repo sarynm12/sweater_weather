@@ -1,14 +1,17 @@
 class Api::V1::ForecastController < ApplicationController
 
   def show
-    conn = Faraday.new('http://www.mapquestapi.com')
-    response = conn.get('/geocoding/v1/address') do |req|
-      req.params['key'] = ENV['MAPQUEST_API_KEY']
-      req.params['location'] = params[:location]
-    end
-    require "pry"; binding.pry
-    coordinates = JSON.parse(response.body, symbolize_names: true)[:results][0][:locations][0][:latLng]
-
+    # conn = Faraday.new('http://www.mapquestapi.com')
+    # response = conn.get('/geocoding/v1/address') do |req|
+    #   req.params['key'] = ENV['MAPQUEST_API_KEY']
+    #   req.params['location'] = params[:location]
+    # end
+    #
+    # coordinates = JSON.parse(response.body, symbolize_names: true)[:results][0][:locations][0][:latLng]
+    location = params[:location]
+    geocoding = GeocodingFacade.new(location)
+    coordinates = geocoding.get_latitude_and_longitude
+    
     conn = Faraday.new(url: "https://api.openweathermap.org") do |req|
       req.params['appid'] = ENV['OPEN_WEATHER_API_KEY']
     end
