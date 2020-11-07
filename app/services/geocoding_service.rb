@@ -13,6 +13,4 @@ class GeocodingService
   def conn
     Faraday.new('http://www.mapquestapi.com')
   end
-
-
 end
