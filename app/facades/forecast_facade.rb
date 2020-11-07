@@ -20,8 +20,8 @@ class ForecastFacade
   end
 
   def current_forecast
-    current_data = forecast_data[:current]
-    CurrentForecast.new(current_data)
+    current_forecast_info = forecast_data[:current]
+    CurrentForecast.new(current_forecast_info)
   end
 
   def hourly_forecast
