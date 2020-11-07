@@ -11,16 +11,17 @@ class Api::V1::ForecastController < ApplicationController
     location = params[:location]
     geocoding = GeocodingFacade.new(location)
     coordinates = geocoding.get_latitude_and_longitude
-    
-    conn = Faraday.new(url: "https://api.openweathermap.org") do |req|
-      req.params['appid'] = ENV['OPEN_WEATHER_API_KEY']
-    end
-    response = conn.get("/data/2.5/onecall") do |req|
-      req.params['lat'] = "#{coordinates[:lat]}"
-      req.params['lon'] = "#{coordinates[:lng]}"
-      req.params['exclude'] = 'minutely'
-    end
-    data = JSON.parse(response.body, symbolize_names: true)
+    forecast = ForecastFacade.new(location)
+    data = forecast.forecast_data
+    # conn = Faraday.new(url: "https://api.openweathermap.org") do |req|
+    #   req.params['appid'] = ENV['OPEN_WEATHER_API_KEY']
+    # end
+    # response = conn.get("/data/2.5/onecall") do |req|
+    #   req.params['lat'] = "#{coordinates[:lat]}"
+    #   req.params['lon'] = "#{coordinates[:lng]}"
+    #   req.params['exclude'] = 'minutely'
+    # end
+    # data = JSON.parse(response.body, symbolize_names: true)
     render json: data
   end
 end
