@@ -1,7 +1,8 @@
 class ForecastFacade
   attr_reader :location,
               :geocoding_service,
-              :forecast_service
+              :forecast_service,
+              :id
 
   def initialize(location)
     @location = location
@@ -16,6 +17,18 @@ class ForecastFacade
 
   def forecast_data
     results = forecast_service.get_forecast(retrieve_location)
+  end
+
+  def current_forecast
+
+  end
+
+  def hourly_forecast
+
+  end
+
+  def daily_forecast
+
   end
 
 end
