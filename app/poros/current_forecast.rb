@@ -1,7 +1,6 @@
 require 'date'
-
 class CurrentForecast
-  attr_reader :datetime,
+  attr_reader :dt,
               :sunrise,
               :sunset,
               :temp,
@@ -9,20 +8,18 @@ class CurrentForecast
               :humidity,
               :uvi,
               :visibility,
-              :conditions,
-              :icon
+              :weather_condition
 
-  def initialize(attrs)
-    @datetime = Time.at(attrs[:dt])
-    @sunrise = Time.at(attrs[:sunrise])
-    @sunset = Time.at(attrs[:sunset])
-    @temp = attrs[:temp]
-    @feels_like = attrs[:feels_like]
-    @humidity = attrs[:humidity]
-    @uvi = attrs[:uvi]
-    @visibility = attrs[:visibility]
-    @conditions = attrs[:weather][0][:main]
-    @icon = attrs[:weather][0][:icon]
+  def initialize(data)
+    @dt = Time.at(data[:dt])
+    @sunrise = Time.at(data[:sunrise])
+    @sunset = Time.at(data[:sunset])
+    @temp = data[:temp].round(0)
+    @feels_like = data[:feels_like].round(0)
+    @humidity = data[:humidity]
+    @uvi = data[:uvi]
+    @visibility = data[:visibility]
+    @weather_condition = data[:weather_condition]
   end
 
 end
