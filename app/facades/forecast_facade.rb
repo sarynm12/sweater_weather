@@ -16,7 +16,7 @@ class ForecastFacade
   end
 
   def forecast_data
-    results = forecast_service.get_forecast(retrieve_location)
+    forecast_service.get_forecast(retrieve_location)
   end
 
   def current_forecast
@@ -32,7 +32,10 @@ class ForecastFacade
   end
 
   def daily_forecast
-
+    daily_data = forecast_data[:daily][0..6]
+    daily_data.map do |forecast|
+      DailyForecast.new(forecast)
+    end 
   end
 
 end
