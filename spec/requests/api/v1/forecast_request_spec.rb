@@ -8,7 +8,7 @@ RSpec.describe 'forecast' do
     expect(response.content_type).to include("application/json")
 
     json = JSON.parse(response.body, symbolize_names: true)
-    
+  
     expect(json).to be_a(Hash)
     expect(json).to have_key(:data)
     expect(json[:data]).to have_key(:id)
