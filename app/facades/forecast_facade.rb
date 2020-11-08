@@ -25,7 +25,7 @@ class ForecastFacade
   end
 
   def hourly_forecast
-    hourly_data = forecast_data[:hourly].take(8)
+    hourly_data = forecast_data[:hourly][0..7]
     hourly_data.map do |forecast|
       HourlyForecast.new(forecast)
     end
@@ -35,7 +35,7 @@ class ForecastFacade
     daily_data = forecast_data[:daily][0..6]
     daily_data.map do |forecast|
       DailyForecast.new(forecast)
-    end 
+    end
   end
 
 end
