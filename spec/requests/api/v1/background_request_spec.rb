@@ -8,8 +8,6 @@ RSpec.describe 'background' do
     expect(response.content_type).to include("application/json")
 
     json = JSON.parse(response.body, symbolize_names: true)
-
-
   end
 
 end
