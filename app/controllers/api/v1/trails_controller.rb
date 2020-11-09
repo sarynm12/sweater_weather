@@ -7,10 +7,10 @@ class Api::V1::TrailsController < ApplicationController
     # coordinates = geocoding.get_latitude_and_longitude
     #pass coordinates into trails request
     trails = TrailsFacade.new(location)
-    data = trails.trail_data
-  
-    data = JSON.parse(response.body, symbolize_names: true)
-    render json: data
+    response = trails.trail_data
+    render json: response
+    # data = JSON.parse(response.body, symbolize_names: true)
+    # render json: data
   end
 
 end
