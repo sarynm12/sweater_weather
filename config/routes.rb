@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       #resources :forecast, only: [:show]
       get '/forecast', to: 'forecast#show'
       get '/backgrounds', to: 'backgrounds#show'
+      get '/trails', to: 'trails#index'
     end
   end
 end
