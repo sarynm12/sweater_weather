@@ -1,19 +1,20 @@
 class BackgroundFacade
-  attr_reader :location
+  attr_reader :location,
+              :background_service
 
   def initialize(location)
     @location = location
+    @background_service = BackgroundService.new
   end
 
-  def get_photo
-    background_service = BackgroundService.new
-    background_service.photo_call(location)
+  def data
+    @background_service.photo_call(location)
   end
 
   def background
     attrs = {
       location: @location,
-      image_url: get_photo[:results][0][:urls][:raw],
+      image_url: data[:results][0][:urls][:raw],
       credits: get_credits
     }
     Background.new(attrs)
@@ -22,7 +23,7 @@ class BackgroundFacade
   def get_credits
     {
       source: 'https://unsplash.com/',
-      author: get_photo[:results][0][:user][:username],
+      author: data[:results][0][:user][:username],
       logo: 'https://unsplash-assets.imgix.net/marketing/press-symbol.svg?auto=format&fit=crop&q=60'
     }
   end

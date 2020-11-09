@@ -1,9 +1,12 @@
 class Api::V1::BackgroundsController < ApplicationController
 
   def show
-    query = params[:location]
-    background = BackgroundFacade.new(query).get_photo
-    render json: background
+    render json: BackgroundSerializer.new(BackgroundFacade.new(background_params[:location]))
+  end
+
+  private
+  def background_params
+    params.permit(:location)
   end
 
 end
