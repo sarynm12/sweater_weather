@@ -3,7 +3,8 @@ class TrailsFacade
               :geocoding_service,
               :directions_service,
               :forecast_service,
-              :trails_service
+              :trails_service,
+              :id
 
   def initialize(location)
     @location = location
@@ -20,6 +21,10 @@ class TrailsFacade
 
   def trail_data
     trails_service.find_trails(retrieve_location)
+  end
+
+  def trails
+    
   end
 
 end
