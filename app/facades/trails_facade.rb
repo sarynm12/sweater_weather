@@ -26,13 +26,13 @@ class TrailsFacade
   def distance
     trail = trail_data[:trails][0][:location]
     data = directions_service.get_directions(location, trail)
-    data[:route][:legs][0][:distance]
+    data[:route][:legs][0][:distance].to_s
   end
 
   def forecast
     data = forecast_service.get_forecast(retrieve_location)
     forecast = {
-      temp: data[:current][:temp],
+      temp: data[:current][:temp].to_s,
       summary: data[:current][:weather].first[:description]
     }
   end
