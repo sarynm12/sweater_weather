@@ -8,7 +8,7 @@ RSpec.describe 'trails request call' do
     expect(response.content_type).to include('application/json')
 
     data = JSON.parse(response.body, symbolize_names: true)
-    require "pry"; binding.pry
+
   end
 
 end
