@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       #resources :forecast, only: [:show]
       get '/forecast', to: 'forecast#show'
+      get '/backgrounds', to: 'backgrounds#show'
     end
   end
 end

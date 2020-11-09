@@ -8,6 +8,7 @@ RSpec.describe 'forecast' do
     expect(response.content_type).to include("application/json")
 
     json = JSON.parse(response.body, symbolize_names: true)
+
     expect(json).to be_a(Hash)
     expect(json).to have_key(:data)
     expect(json[:data]).to have_key(:id)
@@ -15,7 +16,13 @@ RSpec.describe 'forecast' do
     expect(json[:data]).to have_key(:type)
     expect(json[:data][:type]).to eq("forecast")
     expect(json[:data]).to have_key(:attributes)
-    expect(json[:data][:attributes]).to have_key(:retrieve_location)
+    expect(json[:data][:attributes]).to have_key(:current_forecast)
+    expect(json[:data][:attributes]).to have_key(:daily_forecast)
+    expect(json[:data][:attributes]).to have_key(:hourly_forecast)
+
+    expect(json[:data][:attributes][:current_forecast]).to_not have_key(:minutely)
+    expect(json[:data][:attributes][:daily_forecast][0]).to_not have_key(:minutely)
+    expect(json[:data][:attributes][:hourly_forecast][0]).to_not have_key(:minutely)
   end
 
 end
