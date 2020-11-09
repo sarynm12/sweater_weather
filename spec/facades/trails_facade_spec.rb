@@ -3,24 +3,16 @@ require 'rails_helper'
 RSpec.describe TrailsFacade do
   it 'can return location from our geocode service' do
     trails_facade = TrailsFacade.new('denver,co')
+    data = trails_facade.trail_data
     
-    # results = forecast_facade.retrieve_location
-    #
-    expect(results).to be_a(Hash)
-    # expect(results[:lat]).to eq(39.738453)
-    # expect(results[:lng]).to eq(-104.984853)
+    expect(data).to be_a(Hash)
+    expect(data).to have_key(:trails)
+    expect(data[:trails]).to be_an(Array)
+    expect(data[:trails][0]).to have_key(:id)
+    expect(data[:trails][0]).to have_key(:name)
+    expect(data[:trails][0]).to have_key(:summary)
+    expect(data[:trails][0]).to have_key(:difficulty)
+    expect(data[:trails][0]).to have_key(:location)
   end
 
-  # it 'can return forecast data after receiving location from geocode service' do
-  #   forecast_facade = ForecastFacade.new('denver,co')
-  #   forecast_facade.retrieve_location
-  #   data = forecast_facade.forecast_data
-  #
-  #   expect(data).to be_a(Hash)
-  #   expect(data).to have_key(:lat)
-  #   expect(data).to have_key(:lon)
-  #   expect(data).to have_key(:current)
-  #   expect(data).to have_key(:hourly)
-  #   expect(data).to have_key(:daily)
-  # end
 end
