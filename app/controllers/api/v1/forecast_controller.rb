@@ -2,28 +2,6 @@ class Api::V1::ForecastController < ApplicationController
 
   def show
     render json: ForecastSerializer.new(ForecastFacade.new(forecast_params[:location]))
-    # conn = Faraday.new('http://www.mapquestapi.com')
-    # response = conn.get('/geocoding/v1/address') do |req|
-    #   req.params['key'] = ENV['MAPQUEST_API_KEY']
-    #   req.params['location'] = params[:location]
-    # end
-    #
-    # coordinates = JSON.parse(response.body, symbolize_names: true)[:results][0][:locations][0][:latLng]
-    # location = params[:location]
-    # geocoding = GeocodingFacade.new(location)
-    # coordinates = geocoding.get_latitude_and_longitude
-    # forecast = ForecastFacade.new(location)
-    # data = forecast.forecast_data
-    # conn = Faraday.new(url: "https://api.openweathermap.org") do |req|
-    #   req.params['appid'] = ENV['OPEN_WEATHER_API_KEY']
-    # end
-    # response = conn.get("/data/2.5/onecall") do |req|
-    #   req.params['lat'] = "#{coordinates[:lat]}"
-    #   req.params['lon'] = "#{coordinates[:lng]}"
-    #   req.params['exclude'] = 'minutely'
-    # end
-    # data = JSON.parse(response.body, symbolize_names: true)
-    #render json: data
   end
 
   private
@@ -32,6 +10,3 @@ class Api::V1::ForecastController < ApplicationController
     params.permit(:location)
   end
 end
-
-# req.params['q'] = params[:location]
-# req.params['appid'] = ENV['OPEN_WEATHER_API_KEY']
