@@ -9,7 +9,6 @@ RSpec.describe User do
     headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
-
     }
     params = {
       email: 'whatevs@gmail.com',
