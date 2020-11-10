@@ -1,11 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe User do
-  before(:each) do
-    User.destroy_all
-  end
-
-  it 'can successfully create a user' do
+RSpec.describe 'user login' do
+  it 'can allow a user to login' do
+    user = User.create!(email: 'whatevs@gmail.com', password: 'password', password_confirmation: 'password')
     headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -15,10 +12,10 @@ RSpec.describe User do
       password: 'password',
       password_confirmation: 'password'
     }
-    post '/api/v1/users', headers: headers, params: JSON.generate(params)
 
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(params)
     expect(response).to be_successful
-    expect(response.status).to eq(201)
+    expect(response.status).to eq(200)
 
     user = JSON.parse(response.body, symbolize_names: true)
 
@@ -37,45 +34,26 @@ RSpec.describe User do
     expect(user[:data][:attributes]).to_not have_key(:password_confirmation)
   end
 
-  it 'will throw an error if a field is left blank' do
+  it 'will return a general error message if user credentials are not valid' do
+    user = User.create!(email: 'whatever@gmail.com', password: 'password123', password_confirmation: 'password123')
     headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
-
-    }
-    params = {
-      email: '',
-      password: 'password',
-      password_confirmation: 'password'
-    }
-    error = { 'error': 'Fields cannot be left blank' }
-    post '/api/v1/users', headers: headers, params: JSON.generate(params)
-
-    user = JSON.parse(response.body, symbolize_names: true)
-    expect(response).to_not be_successful
-    expect(response.status).to eq(400)
-
-    expect(user).to eq(error)
-  end
-
-  it 'will throw an error if passwords do not match' do
-    headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-
     }
     params = {
       email: 'whatevs@gmail.com',
-      password: 'password',
-      password_confirmation: 'fjdkajfkljasjlkdsf'
+      password: 'password123',
+      password_confirmation: 'password123'
     }
-    error = { 'error': 'Your passwords do not match' }
-    post '/api/v1/users', headers: headers, params: JSON.generate(params)
 
-    user = JSON.parse(response.body, symbolize_names: true)
+    error = { 'error': 'Credentials are Bad' }
+
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(params)
     expect(response).to_not be_successful
     expect(response.status).to eq(400)
 
+    user = JSON.parse(response.body, symbolize_names: true)
     expect(user).to eq(error)
   end
+
 end
