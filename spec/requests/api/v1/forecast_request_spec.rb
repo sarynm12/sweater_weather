@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'forecast' do
-  it 'can retrieve forecast for a given city' do
+  it 'can retrieve forecast for a given city', :vcr do
     get '/api/v1/forecast?location=denver,co'
 
     expect(response).to be_successful
@@ -24,5 +24,4 @@ RSpec.describe 'forecast' do
     expect(json[:data][:attributes][:daily_forecast][0]).to_not have_key(:minutely)
     expect(json[:data][:attributes][:hourly_forecast][0]).to_not have_key(:minutely)
   end
-
 end
