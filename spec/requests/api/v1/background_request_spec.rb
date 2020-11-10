@@ -26,5 +26,3 @@ RSpec.describe 'background' do
   end
 
 end
-
-#icon: "http://openweathermap.org/img/wn/#{@current[:weather].first[:icon]}.png"
