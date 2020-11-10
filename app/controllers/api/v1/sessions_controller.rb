@@ -3,12 +3,9 @@ class Api::V1::SessionsController < ApplicationController
   def create
     user = User.find_by(email: session_params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:success] = 'You successfully logged in.'
-      redirect_to '/dashboard'
+      render json: { user, {'message': 'Success'} status: 200 }
     else
-      flash[:error] = 'Sorry, your credentials are bad.'
-      redirect_to '/login'
+      render json: { 'error': 'Credentials are Bad'}, status: 400
     end
   end
 
