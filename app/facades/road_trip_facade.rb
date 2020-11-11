@@ -13,7 +13,7 @@ class RoadTripFacade
 
   def travel_minutes
     data = distance_service.get_distance(origin, destination)
-    (data[:route][:time] / 60).round
+    ((data[:route][:time] / 60).round)
   end
 
   def travel_time
@@ -28,11 +28,11 @@ class RoadTripFacade
   end
 
   def forecast
-    arrival = (travel_minutes / 60).round
-    results = forecast_data.hourly_forecast[arrival]
+    arrival = (travel_minutes / 60).round + 1
+    results = forecast_data.forecast_data[:hourly][arrival]
     attrs = {
-      temperature: results.temp,
-      conditions: results.description
+      temperature: results[:temp],
+      conditions: results[:weather][0][:description]
     }
     DestinationForecast.new(attrs)
   end
