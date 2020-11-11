@@ -1,7 +1,11 @@
 class Api::V1::ForecastController < ApplicationController
 
   def show
-    render json: ForecastSerializer.new(ForecastFacade.new(forecast_params[:location]))
+    if params[:location].nil? || params[:location].empty?
+      render json: { 'error': 'No location specified' }, status: 400
+    else
+      render json: ForecastSerializer.new(ForecastFacade.new(forecast_params[:location]))
+    end
   end
 
   private

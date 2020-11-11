@@ -24,4 +24,16 @@ RSpec.describe 'forecast' do
     expect(json[:data][:attributes][:daily_forecast][0]).to_not have_key(:minutely)
     expect(json[:data][:attributes][:hourly_forecast][0]).to_not have_key(:minutely)
   end
+
+  it 'throws an error if no location is passed' do
+    get '/api/v1/forecast?location='
+
+    error = { 'error': 'No location specified' }
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    json = JSON.parse(response.body, symbolize_names: true)
+    expect(json).to eq(error)
+  end
 end
