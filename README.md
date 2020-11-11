@@ -1,5 +1,9 @@
 # README
 
+Sweater Weather is a rails backend application built to satisfy wireframes presented by a frontend team working to create a road trip planning weather app.
+
+This application designs endpoints
+
 ## Setup
 1. git clone git@github.com:sarynm12/sweater-weather.git
 2. cd sweater_weather
