@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sweater Weather is a backend rails application built to satisfy wireframes presented by a frontend team working to create a road trip planning weather app.
 
-Things you may want to cover:
+This application designs endpoints
 
-* Ruby version
+## Setup
+1. git clone git@github.com:sarynm12/sweater-weather.git
+2. cd sweater_weather
+3. bundle install
+4. rails db{create,migrate}
+5. Add your own API keys to the application.yml file (OPEN_WEATHER_API_KEY, UNSPLASH_API_KEY, MAPQUEST_API_KEY)
+6. bundle exec rspec to run the test suite
 
-* System dependencies
+## APIs Utilized
+- [Unsplash](https://api.unsplash.com/)<br>
+- [MapQuest](http://www.mapquestapi.com)<br>
+- [Open Weather Map](https://api.openweathermap.org)
 
-* Configuration
+## Ruby/Rails Version
+Ruby 2.5.3 Rails 5.2.4
 
-* Database creation
+## Wireframes
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
