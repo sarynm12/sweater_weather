@@ -69,11 +69,13 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
-
+  #
   # VCR.configure do |config|
   #   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   #   config.hook_into :webmock
-  #   #config.filter_sensitive_data('MOVIES_SECRET_KEY') { ENV['MOVIES_API_KEY'] }
+  #   config.filter_sensitive_data('MAPQUEST_API_KEY') { ENV['MAPQUEST_API_KEY'] }
+  #   config.filter_sensitive_data('OPEN_WEATHER_API_KEY') { ENV['OPEN_WEATHER_API_KEY'] }
+  #   config.filter_sensitive_data('UNSPLASH_API_KEY') { ENV['UNSPLASH_API_KEY'] }
   #   #config.default_cassette_options = { re_record_interval: 7.days, record: :new_episodes }
   #   config.configure_rspec_metadata!
   # end
