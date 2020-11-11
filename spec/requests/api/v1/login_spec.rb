@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'user login' do
-  it 'can allow a user to login' do
+  it 'can allow a user to login', :vcr do
     user = User.create!(email: 'whatevs@gmail.com', password: 'password', password_confirmation: 'password')
     headers = {
       'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ RSpec.describe 'user login' do
     expect(user[:data][:attributes][:api_key]).to be_a(String)
     expect(user[:data][:attributes]).to_not have_key(:password)
     expect(user[:data][:attributes]).to_not have_key(:password_confirmation)
-  end
+  end 
 
   it 'will return a general error message if user credentials are not valid' do
     user = User.create!(email: 'whatever@gmail.com', password: 'password123', password_confirmation: 'password123')

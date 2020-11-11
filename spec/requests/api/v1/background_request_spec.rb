@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'background' do
-  it 'can retrieve background image' do
+  it 'can retrieve a background image', :vcr do
     get '/api/v1/backgrounds?location=denver,co'
 
     expect(response).to be_successful
     expect(response.content_type).to include("application/json")
 
     json = JSON.parse(response.body, symbolize_names: true)
-
     expect(json).to be_a(Hash)
     expect(json).to have_key(:data)
     expect(json[:data]).to have_key(:id)
@@ -24,5 +23,4 @@ RSpec.describe 'background' do
     expect(json[:data][:attributes][:background][:credits]).to have_key(:author)
     expect(json[:data][:attributes][:background][:credits]).to have_key(:logo)
   end
-
 end
