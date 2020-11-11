@@ -1,6 +1,6 @@
 # README
 
-Sweater Weather is a rails backend application built to satisfy wireframes presented by a frontend team working to create a road trip planning weather app.
+Sweater Weather is a backend rails application built to satisfy wireframes presented by a frontend team working to create a road trip planning weather app.
 
 This application designs endpoints
 
