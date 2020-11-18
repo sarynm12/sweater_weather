@@ -63,7 +63,7 @@ RSpec.describe User do
     params = {
       email: 'whatsup@gmail.com',
       password: 'password',
-      password_confirmation: 'fjdkajfkljasjlkdsf'
+      password_confirmation: 'fjdkajfkljasjlkdsfjfkajlafjd'
     }
     error = { 'error': 'Your passwords do not match' }
     post '/api/v1/users', headers: headers, params: JSON.generate(params)
