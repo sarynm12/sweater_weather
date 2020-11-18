@@ -61,7 +61,7 @@ RSpec.describe User do
 
     }
     params = {
-      email: 'whatevs@gmail.com',
+      email: 'whatsup@gmail.com',
       password: 'password',
       password_confirmation: 'fjdkajfkljasjlkdsf'
     }
