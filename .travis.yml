@@ -1,8 +1,11 @@
 language: ruby
 rbenv:
-  - 2.5.3
+- 2.5.3
 addons:
   postgresql: 9.6
 script:
-  - bundle exec rails db:{create,migrate} RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+env:
+  global:
+    secure: McVQ20O2hsdKzoDMpunF9yIX4pmX+oKSBh74IwWC4JYMGePMfVN9hFHrwZ3GLoQQCS6BFh/SQ31OZEsqFl1CrO1NAyn+y0keWtI18ZqMfZ4GGNfFCO0HDyTIiXSWzbjCwQMR+nymFtEfEQMoBEbBndtrBvH/HtBPp39PQeBCfzxkrNNblPza4xL6MBi7sp1lGz87YSjW2bgSUlapHOfloeYADqb7jt5os7L2Ln1//gXl45SHYwJDACSjdWMMHwrDqqQHLZNjecCd3jCNw4OLlCDvGJDepWKrEEcRaAkGvU8ANtjmk9jE40JiZu3VFhMCfUtRnaiT1aONWIxW3QTuskzDJcipGGzeO8dE/gJDH2jxcVPc1uu+oW/4khn+21rUTJvIRHS+HJPbCL9l/Q5kEZpjHFvpJw2ZorfPqrl5wls7VdYIXjNj7BSziglJgDj1FKh9FBXHuD7hDXd31k99ULbEVaIP5FxbZj1GwMxpWedTgWVcDPQr5nmhVcezqq2tzSprm6SS7VA1S7rRpCGbeycuN0+Eq3Zn1g6Tc8LKndTkjMM5ecbgvS4K8C/UYkxK6d427hOMxkfrhvfTLc253Q58Q0MgohIHocmSykeWqqkY/rqkQlEepIn416cCPROVkLTnXHmfu4iQpK2eaNktyL7Pu9yfXp1WYvYQPMqObqs=
