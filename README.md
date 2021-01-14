@@ -2,7 +2,7 @@
 
 Sweater Weather is a backend rails application built to satisfy wireframes presented by a frontend team working to create a road trip planning weather app.
 
-This application designs endpoints
+This application designs endpoints, retrieves a weather forecast for a designated city (current, hourly, & daily), retrieves a background image for a designated city, registers & logs-in a user, and retrieves directions and travel time for a given destination. The formatted responses are in JSON.
 
 ## Setup
 1. git clone git@github.com:sarynm12/sweater-weather.git
@@ -20,5 +20,20 @@ This application designs endpoints
 ## Ruby/Rails Version
 Ruby 2.5.3 Rails 5.2.4
 
-## Wireframes
+## Sample Wireframe
+<p align="center">
+<img src="app/assets/images/wireframe.png" width="400"><br/>
+</p>
 
+## Formatted JSON Response
+<p align="center">
+<img src="app/assets/images/road_trip.png" width="400"><br/>
+</p>
+
+## Testing with RSpec
+
+In the command line run<br/>
+
+`$ bundle exec rspec`
+
+All tests should be passing.
