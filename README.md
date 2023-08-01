@@ -5,12 +5,12 @@ Sweater Weather is a backend rails application built to satisfy wireframes prese
 This application designs endpoints, retrieves a weather forecast for a designated city (current, hourly, & daily), retrieves a background image for a designated city, registers & logs-in a user, and retrieves directions and travel time for a given destination. The formatted responses are in JSON.
 
 ## Setup
-1. git clone git@github.com:sarynm12/sweater-weather.git
-2. cd sweater_weather
-3. bundle install
-4. rails db{create,migrate}
+1. `git clone git@github.com:sarynm12/sweater-weather.git`
+2. `cd sweater_weather`
+3. `bundle install`
+4. `rails db{create,migrate}`
 5. Add your own API keys to the application.yml file (OPEN_WEATHER_API_KEY, UNSPLASH_API_KEY, MAPQUEST_API_KEY)
-6. bundle exec rspec to run the test suite
+6. `bundle exec rspec` to run the test suite
 
 ## APIs Utilized
 - [Unsplash](https://api.unsplash.com/)<br>
